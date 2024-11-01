@@ -48,12 +48,14 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """get page
         """
-        start_index, end_index = index_range(page, page_size)
-        csv_list = self.dataset()
-
+        
         if not isinstance(page, int) or not isinstance(page_size, int):
             raise AssertionError("AssertionError raised when page\
                                 and/or page_size are not ints")
+    
+        start_index, end_index = index_range(page, page_size)
+        csv_list = self.dataset()
+
         if page == 0 or page_size == 0:
             raise AssertionError("AssertionError raised with 0")
         if page < 0 or page_size < 0:
